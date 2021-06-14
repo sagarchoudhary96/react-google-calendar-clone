@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "@material-ui/core/styles/styled";
 import Container from "@material-ui/core/Container";
+import CalendarHeader from "Components/CalendarHeader";
 import CalendarToolbar from "Components/CalendarToolbar";
 import { getAllWeekDays, WeekDay } from "utils/calendarUtils";
 
@@ -40,15 +41,16 @@ const CalendarView = (): JSX.Element => {
         goToTodaysDate={goToTodaysDate}
         startDate={startDate}
       />
+      <CalendarHeader weekDays={weekDays} />
     </Wrapper>
   );
 };
 
-const Wrapper = styled(Container)(({ theme }) => ({
+const Wrapper = styled(Container)({
   display: "flex",
   flexDirection: "column",
   height: "100%",
   overflow: "hidden",
-}));
+});
 
 export default CalendarView;
