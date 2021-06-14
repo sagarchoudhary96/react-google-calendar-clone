@@ -9,3 +9,7 @@ export type SingleEvent = {
 export type EventsDataMap = {
   [key: string]: SingleEvent[];
 };
+
+// Database constants
+export const DATABASE_NAME = "calendar";
+export const EVENTS_TABLE_NAME = "events";
