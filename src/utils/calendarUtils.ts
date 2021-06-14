@@ -69,3 +69,32 @@ const months: string[] = [
 export const getDateFormattedMonthYear = (date: Date) => {
   return `${months[date.getMonth()]} ${date.getFullYear()}`;
 };
+
+/**
+ *
+ * @param date start date of event
+ * @param duration duration of event
+ * @returns formatted string in format `HH:MM:am/pm - HH:MM:am/pm`
+ */
+export const getFormattedTimeStampForEvent = (
+  date: Date,
+  duration: number
+): string => {
+  const startHours = date.getHours();
+  const startMinutes = date.getMinutes();
+  const endDate = new Date(date);
+  endDate.setMinutes(endDate.getMinutes() + duration);
+  const endHours = endDate.getHours();
+  const endMinutes = endDate.getMinutes();
+
+  return `${formatTimeString(startHours, startMinutes)} - ${formatTimeString(
+    endHours,
+    endMinutes
+  )}`;
+};
+
+// format time to readable string
+const formatTimeString = (hours: number, minutes: number): string =>
+  `${hours === 0 ? "12" : hours > 12 ? hours - 12 : hours}:${
+    minutes >= 30 ? "30" : "00"
+  } ${hours < 12 ? "am" : "pm"}`;
