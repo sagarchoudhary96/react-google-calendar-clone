@@ -1,7 +1,7 @@
 {
   "name": "calendar-app",
   "version": "0.1.0",
-  "homepage": "https://sagarchoudhary96.github.io/react-google-calender-clone/",
+  "homepage": "https://sagarchoudhary96.github.io/react-google-calendar-clone/",
   "description": "A google calendar weekview clone to display events",
   "private": true,
   "dependencies": {
