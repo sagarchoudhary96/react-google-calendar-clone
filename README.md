@@ -1,6 +1,6 @@
 # React Google Calendar Clone
 
-### [Live Version](https://sagarchoudhary96.github.io/react-google-calender-clone/)
+### [Live Version](https://sagarchoudhary96.github.io/react-google-calendar-clone/)
 
 A Basic google calendar Weekview clone to display events and store the list of event to indexedDB
 
