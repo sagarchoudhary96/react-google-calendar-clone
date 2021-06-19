@@ -19,29 +19,24 @@ import { CALENDAR_COLUMN_HEIGHT } from "utils/constants";
  */
 const CalendarView = (): JSX.Element => {
   // state for managing current selected week
-  const [startDate, setStartDate] = useState<Date>(new Date());
   const [weekDays, setWeekDays] = useState<WeekDay[]>(getAllWeekDays());
 
   // get events data from app context
-  const { eventsData } = useContext(AppContext);
+  const { eventsData, todaysDate } = useContext(AppContext);
 
   const goToNextWeek = () => {
-    let nextWeekDate = new Date(startDate);
-    nextWeekDate.setDate(nextWeekDate.getDate() + 7);
-    setStartDate(nextWeekDate);
+    let nextWeekDate = new Date(weekDays[6].date);
+    nextWeekDate.setDate(nextWeekDate.getDate() + 1);
     setWeekDays(getAllWeekDays(nextWeekDate));
   };
 
   const goToPrevWeek = () => {
-    let prevWeekDate = new Date(startDate);
+    let prevWeekDate = new Date(weekDays[0].date);
     prevWeekDate.setDate(prevWeekDate.getDate() - 7);
-    setStartDate(prevWeekDate);
     setWeekDays(getAllWeekDays(prevWeekDate));
   };
 
   const goToTodaysDate = () => {
-    let todayDate = new Date();
-    setStartDate(todayDate);
     setWeekDays(getAllWeekDays());
   };
 
@@ -51,9 +46,9 @@ const CalendarView = (): JSX.Element => {
         goToNextWeek={goToNextWeek}
         goToPrevWeek={goToPrevWeek}
         goToTodaysDate={goToTodaysDate}
-        startDate={startDate}
+        weekDays={weekDays}
       />
-      <CalendarHeader weekDays={weekDays} />
+      <CalendarHeader weekDays={weekDays} todaysDate={todaysDate} />
       <CalendarGridWrapper>
         <Box alignItems="flex-start" height="auto" flex="none" width="65px">
           {getFormattedDayHours().map((hour) => (

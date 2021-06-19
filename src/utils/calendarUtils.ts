@@ -63,11 +63,20 @@ const months: string[] = [
 
 /**
  *
- * @param date  Date Object
- * @returns string for the passed date in format:  "MONTH YYYY"
+ * @param weekDays List of week Days
+ * @returns string for the passed weekDays and returns month for it
  */
-export const getDateFormattedMonthYear = (date: Date) => {
-  return `${months[date.getMonth()]} ${date.getFullYear()}`;
+export const getFormattedWeekLabel = (weekDays: WeekDay[]) => {
+  const startDate = weekDays[0].date;
+  const endDate = weekDays[6].date;
+
+  if (startDate.getMonth() === endDate.getMonth()) {
+    return `${months[startDate.getMonth()]} ${startDate.getFullYear()}`;
+  }
+
+  return `${months[startDate.getMonth()]} - ${
+    months[endDate.getMonth()]
+  } ${startDate.getFullYear()}`;
 };
 
 /**

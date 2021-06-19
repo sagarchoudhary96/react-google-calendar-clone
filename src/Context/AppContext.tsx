@@ -9,12 +9,16 @@ import { events } from "utils/eventsData";
 
 interface AppContextInterface {
   eventsData: EventsDataMap;
+  todaysDate: Date;
 }
 
 /**
  * Context to manage app state
  */
-const AppContext = React.createContext<AppContextInterface>({ eventsData: {} });
+const AppContext = React.createContext<AppContextInterface>({
+  eventsData: {},
+  todaysDate: new Date(),
+});
 
 /**
  * Indexed Db instance
@@ -57,7 +61,7 @@ export const AppContextProvider = (props: React.PropsWithChildren<{}>) => {
   }, []);
 
   return (
-    <AppContext.Provider value={{ eventsData }}>
+    <AppContext.Provider value={{ eventsData, todaysDate: new Date() }}>
       {props.children}
     </AppContext.Provider>
   );

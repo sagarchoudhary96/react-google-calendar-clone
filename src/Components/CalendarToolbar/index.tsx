@@ -6,21 +6,21 @@ import IconButton from "@material-ui/core/IconButton";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeftRounded";
 import ChevronRightIcon from "@material-ui/icons/ChevronRightRounded";
 import styled from "@material-ui/core/styles/styled";
-import { getDateFormattedMonthYear } from "utils/calendarUtils";
+import { getFormattedWeekLabel, WeekDay } from "utils/calendarUtils";
 
 // type defination for component props
 type Props = {
   goToNextWeek: () => void;
   goToPrevWeek: () => void;
   goToTodaysDate: () => void;
-  startDate: Date;
+  weekDays: WeekDay[];
 };
 
 /**
  * Renders Calendar toolbar with controls
  */
 const CalendarToolbar = ({
-  startDate,
+  weekDays,
   goToNextWeek,
   goToPrevWeek,
   goToTodaysDate,
@@ -52,7 +52,7 @@ const CalendarToolbar = ({
           </IconButton>
         </ControlButtonsWrapper>
         <Typography variant="h4" color="textSecondary">
-          {getDateFormattedMonthYear(startDate)}
+          {getFormattedWeekLabel(weekDays)}
         </Typography>
       </Box>
     </Box>

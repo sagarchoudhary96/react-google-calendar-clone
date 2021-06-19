@@ -6,12 +6,13 @@ import Box from "@material-ui/core/Box";
 // CalendarHeader props
 type Props = {
   weekDays: WeekDay[];
+  todaysDate: Date;
 };
 
 /**
  * Renders Header For the Calendar with the selected weekDays
  */
-const CalendarHeader = ({ weekDays }: Props) => {
+const CalendarHeader = ({ weekDays, todaysDate }: Props) => {
   return (
     <HeaderRow display="flex">
       <Box width="65px" display="flex" flex="none" />
@@ -25,6 +26,11 @@ const CalendarHeader = ({ weekDays }: Props) => {
             flex={1}
             border={1}
             borderColor="divider"
+            bgcolor={
+              day.date.toDateString() === todaysDate.toDateString()
+                ? "text.disabled"
+                : ""
+            }
             p={1}
           >
             <Typography gutterBottom>{day.weekDayName}</Typography>
